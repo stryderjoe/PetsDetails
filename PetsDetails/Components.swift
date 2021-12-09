@@ -16,12 +16,36 @@ struct Components: View {
 
 
 struct PetCard: View {
+    
+    let petData: PetData
+    
+    init(petData: PetData) {
+        self.petData = petData
+    }
+    
     var body: some View {
         
         HStack {
             
+           Image("pddog")
+            .resizable()
+            .frame(width: 120, height: 120)
+            .clipshape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
             
-            
+            VStack(alignment: .leading, content: {
+                
+                HStack(spacing: 15) {
+                Text("name")
+                    .fontWeight(.heavy)
+                Text("date")
+                    .foregroundColor(.gray)
+                    .opacity(0.8)
+                }
+                
+                Text("location")
+                
+            })
             
         }
     }
