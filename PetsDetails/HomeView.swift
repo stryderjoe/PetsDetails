@@ -7,14 +7,14 @@ struct MainHome: View {
   private let gridItems = [GridItem(.flexible()),
                              GridItem(.flexible())]
   
-  @ObservedObject var viewModel = RoleViewModel()
+  @ObservedObject var viewModel = DataGrabberModel()
   
   var body: some View {
     NavigationView {
         SearchBar()
         ScrollView {
       
-           ForEach(viewModel.wikiroles) { wikiroles in
+           ForEach(viewModel.petinfo) { petinfo in
                         NavigationLink(destination: WikiRoleDetails(wikiRoleData: wikiroles, roleViewModel: viewModel)) {
                             
                             RoleCard(wikiRoleData: wikiroles, roleViewModel: viewModel)
