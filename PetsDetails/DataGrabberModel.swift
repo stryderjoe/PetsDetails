@@ -1,18 +1,18 @@
 import SwiftUI
 import Foundation
 
-class RoleViewModel: ObservableObject {
+class DataGrabberModel: ObservableObject {
     
-    @Published var wikiroles = [WikiRoleData]()
+    @Published var petinfo = [PetData]()
     
     let apiURL =
-    "https://firebasestorage.googleapis.com/v0/b/botc-companion.appspot.com/o/BOTC%20Wiki%20Database%20-%20Sheet1.json?alt=media&token=79f2d67b-e835-49f2-bd94-0c80c5383a20"
+    "https://firebasestorage.googleapis.com/v0/b/pet-filler.appspot.com/o/database%20-%20Sheet1.json?alt=media&token=1ed7ea5a-f052-4c6b-80e0-8fe3563fb564"
     
     init() {
-        fetchWikiRolesData()
+        fetchPetData()
     }
     
-    func fetchWikiRolesData() {
+    func fetchPetData() {
         guard let url = URL(string: apiURL) else { return }
         
         let session = URLSession.shared
@@ -21,8 +21,8 @@ class RoleViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 do {
-                    let wikiroles = try JSONDecoder().decode([WikiRoleData].self, from: cleanData)
-                    self.wikiroles = wikiroles
+                    let petinfo = try JSONDecoder().decode([PetData].self, from: cleanData)
+                    self.petinfo = petinfo
                 } catch {
                     print("error msg:",error)
                 }
@@ -31,3 +31,17 @@ class RoleViewModel: ObservableObject {
         task.resume()
     }
  }
+
+
+
+extension Data {
+    func parseData(removeString string: String) -> Data? {
+        let dataAsString = String(data: self, encoding: .utf8)
+        let parsedDataString = dataAsString?
+            .replacingOccurrences(of: string, with: "")
+        guard let data = parsedDataString?.data(using: .utf8) else {
+            return nil }
+        
+        return data
+    }
+}
