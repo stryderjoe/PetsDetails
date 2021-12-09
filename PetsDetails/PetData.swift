@@ -11,8 +11,8 @@ struct PetData: Decodable, Identifiable {
     let id: Int
     let name: String
     let imageURL: String
-    let datelost: String
-    let lastseen: String
+//    let datelost: String
+    let location: String
     let breed: String
     let color: String
     let size: String

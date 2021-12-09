@@ -6,7 +6,7 @@ class DataGrabberModel: ObservableObject {
     @Published var petinfo = [PetData]()
     
     let apiURL =
-    "https://firebasestorage.googleapis.com/v0/b/pet-filler.appspot.com/o/database%20-%20Sheet1.json?alt=media&token=1ed7ea5a-f052-4c6b-80e0-8fe3563fb564"
+    "https://firebasestorage.googleapis.com/v0/b/pet-filler.appspot.com/o/fixedDatabase.json?alt=media&token=dbc8c494-c27c-4750-8928-c70c1beccdef"
     
     init() {
         fetchPetData()
@@ -30,7 +30,7 @@ class DataGrabberModel: ObservableObject {
         }
         task.resume()
     }
- }
+}
 
 
 

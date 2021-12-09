@@ -7,8 +7,18 @@
 
 import SwiftUI
 import Foundation
+import Kingfisher
 
 struct PetDetailsView: View {
+    
+    let petData: PetData
+    let petInfoModel: DataGrabberModel
+    
+    init(petData: PetData, petInfoModel: DataGrabberModel) {
+        self.petData = petData
+        self.petInfoModel = petInfoModel
+    }
+    
     
     public let skyBlue = Color("skyBlue")
     public let lightGray = Color("lightGray")
@@ -16,7 +26,7 @@ struct PetDetailsView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Image("pddog")  //Main pet pic
+                KFImage(URL(string: petData.imageURL))  //Main pet pic
                     .resizable()
                     .frame(width: 200, height: 200)
                     .clipShape(Circle())
@@ -27,7 +37,7 @@ struct PetDetailsView: View {
                 VStack(alignment: .center) {
                     VStack(spacing: 5) {
                         
-                        Text("Doggo")    //Pet name
+                        Text(petData.name.capitalized)    //Pet name
                             .font(.title)
                             .bold()
                             .padding(.bottom, 15)
@@ -48,7 +58,7 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("datelost")
+                                    Text("fix the json")
                                         .font(.title3)
                                         .padding(.bottom, 20)
                                     ///
@@ -56,7 +66,7 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("breed")
+                                    Text(petData.breed.capitalized)
                                         .font(.title3)
                                         .padding(.bottom, 20)
                                     ///
@@ -64,10 +74,15 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("size")
+                                    Text(petData.size.capitalized)
                                         .font(.title3)
                                         .padding(.bottom, 5)
-                                }.padding(.top, 10)
+                                }
+                                .fixedSize(horizontal: true, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 10)
+                                
+                                
                                 
                                 VStack(spacing: 12) {
                                 
@@ -75,7 +90,7 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("lastseen")
+                                    Text(petData.location.capitalized)
                                         .font(.title3)
                                         .padding(.bottom, 20)
                                     ///
@@ -83,7 +98,7 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("color")
+                                    Text(petData.color.capitalized)
                                         .font(.title3)
                                         .padding(.bottom, 20)
                                     ///
@@ -91,10 +106,13 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("age")
+                                    Text(petData.age.capitalized)
                                         .font(.title3)
                                         .padding(.bottom, 5)
-                                }.padding(.top, 10)
+                                }
+                                .fixedSize(horizontal: true, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 10)
                             }
                             
                             CustomDivider()
@@ -140,8 +158,8 @@ struct CustomDivider: View {
 
 
 
-struct PetDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PetDetailsView()
-    }
-}
+//struct PetDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PetDetailsView(petData: petinfo, petInfoModel: DataGrabberModel)
+//    }
+//}

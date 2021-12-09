@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct Components: View {
     var body: some View {
@@ -17,37 +18,54 @@ struct Components: View {
 
 struct PetCard: View {
     
+    public let skyBlue = Color("skyBlue")
+    public let lightGray = Color("lightGray")
     let petData: PetData
+    let petInfoModel: DataGrabberModel
     
-    init(petData: PetData) {
+    init(petData: PetData, petInfoModel: DataGrabberModel) {
         self.petData = petData
+        self.petInfoModel = petInfoModel
     }
     
     var body: some View {
         
-        HStack {
+        ZStack {
             
-           Image("pddog")
-            .resizable()
-            .frame(width: 120, height: 120)
-            .clipshape(Circle())
-            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(.white)
+                            .frame(width: UIScreen.main.bounds.width - 15, height: 90)
             
-            VStack(alignment: .leading, content: {
+            HStack(spacing: 15) {
                 
-                HStack(spacing: 15) {
-                Text("name")
-                    .fontWeight(.heavy)
-                Text("date")
-                    .foregroundColor(.gray)
-                    .opacity(0.8)
-                }
+                KFImage(URL(string: petData.imageURL))
+                    .resizable()
+                    .frame(width: 75, height: 75)
+                    .padding(10)
+                    .clipShape(Circle())
                 
-                Text("location")
+                VStack(alignment: .leading, content: {
+                    
+                    HStack(spacing: 15) {
+                        Text(petData.name.capitalized)
+                            .bold()
+                            .foregroundColor(.black)
+                        Text(petData.breed.capitalized)
+                            .foregroundColor(.gray)
+                            .opacity(0.8)
+                    }
+                    
+                    Text(petData.location.capitalized)
+                        .foregroundColor(.black)
+                    
+                })
                 
-            })
-            
-        }.frame(width: UIScreen.main.bounds.width, height: 140)
+            }
+            .frame(width: UIScreen.main.bounds.width - 25, height: 90, alignment: .leading)
+        }
+        .background(skyBlue)
+        .frame(width: UIScreen.main.bounds.width)
+        .padding(.top, 5)
     }
 }
 
