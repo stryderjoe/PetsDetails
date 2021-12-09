@@ -47,7 +47,7 @@ struct PetCard: View {
                 
             })
             
-        }
+        }.frame(width: UIScreen.main.bounds.width, height: 140)
     }
 }
 
