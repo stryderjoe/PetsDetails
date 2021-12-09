@@ -1,12 +1,12 @@
 -PROJECT REQUIRES KINGFISHER MODULE-
 
-PetsDetailsApp - basic main
-
-PetDetailsView - Skyblue and LightGray are custom colors, you can replace them with whatever
-
 DataGrabberModule - apiURL is important to note, pay attention to this file for errors
 
 FixedDatabase - fixed version of the old filler database 
+
+Skyblue and LightGray are custom colors, you can replace them with whatever, they appear in most files
+
+You can change CustomDivider's width on call
 
               .7
             .'/
