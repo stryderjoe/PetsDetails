@@ -50,7 +50,8 @@ struct PetCard: View {
                         Text(petData.name.capitalized)
                             .bold()
                             .foregroundColor(.black)
-                        Text(petData.breed.capitalized)
+                        Text(petData.datelost)
+                            .scaleEffect(0.9)
                             .foregroundColor(.gray)
                             .opacity(0.8)
                     }

@@ -58,7 +58,7 @@ struct PetDetailsView: View {
                                         .font(.title3)
                                         .bold()
                                     
-                                    Text("fix the json")
+                                    Text(petData.datelost)
                                         .font(.title3)
                                         .padding(.bottom, 20)
                                     ///
